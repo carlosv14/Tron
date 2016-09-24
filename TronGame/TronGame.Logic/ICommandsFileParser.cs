@@ -9,6 +9,6 @@ namespace TronGame.Logic
     public interface ICommandsFileParser
     {
         List<Player> GetPlayers();
-        Dictionary<Player, ICommand> GetCommands();
+        IList<ICommand> GetCommands();
     }
 }

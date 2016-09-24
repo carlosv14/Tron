@@ -2,9 +2,16 @@
 {
     internal class Down : ICommand
     {
+        public Player Player { get; set; }
+
+        public Down(Player player)
+        {
+            Player = player;
+        }
+
         public void Run()
         {
-            throw new System.NotImplementedException();
+            Player.Move(1, 0);
         }
     }
 }

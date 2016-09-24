@@ -2,6 +2,7 @@
 {
     public interface ICommand
     {
+        Player Player { get; set; }
         void Run();
     }
 }

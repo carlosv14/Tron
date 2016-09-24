@@ -2,9 +2,16 @@
 {
     internal class Right : ICommand
     {
+        public Player Player { get; set; }
+
+        public Right(Player player)
+        {
+            Player = player;
+        }
+
         public void Run()
         {
-            throw new System.NotImplementedException();
+            Player.Move(0, 1);
         }
     }
 }

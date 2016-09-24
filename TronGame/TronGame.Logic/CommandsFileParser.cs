@@ -16,7 +16,7 @@ namespace TronGame.Logic
         public CommandsFileParser(string fileName)
         {
             this._fileName = fileName;
-            this._fileContent = File.ReadAllText(_fileName);
+            this._fileContent = File.ReadAllText(fileName);
         }
 
         public List<Player> GetPlayers()
@@ -34,21 +34,18 @@ namespace TronGame.Logic
             return players;
         }
 
-        public Dictionary<Player, ICommand> GetCommands()
+        public IList<ICommand> GetCommands()
         {
             List<Player> players = GetPlayers();
-            Dictionary<Player, ICommand> commands = new Dictionary<Player, ICommand>();
             List<string> playerMoves = _fileContent.Split(',').ToList();
+            List<ICommand> list = new List<ICommand>();
             foreach (var command in playerMoves)
             {
                 var content = command.Split(':');
-                var player = players.FirstOrDefault(n => n.Name == content[0]);
-                if (player != null)
-                {
-                    commands.Add(player, CommandFactory.Get(content[1]));
-                }
+                Player player = players.FirstOrDefault(n => n.Name == content[0]);
+                if (player != null) list.Add(CommandFactory.Get(content[1], player));
             }
-            return commands;
+            return list;
         }
     }
 }
