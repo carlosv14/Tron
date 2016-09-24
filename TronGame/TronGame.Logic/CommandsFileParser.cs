@@ -21,31 +21,23 @@ namespace TronGame.Logic
 
         public List<Player> GetPlayers()
         {
-            List<Player> players = new List<Player>();
-            List<string> split = _fileContent.Split('|').ToList();
+            var split = _fileContent.Split('|').ToList();
             var playerContent = split[0];
             this._fileContent = split[1];
-            List<string> playersContent = playerContent.Split(';').ToList();
-            foreach (var player in playersContent)
-            {
-                var playerFields = player.Split(',');
-                players.Add(new Player {Color = Color.FromName(playerFields[1]), Name = playerFields[0]});
-            }
-            return players;
+            var playersContent = playerContent.Split(';').ToList();
+            return playersContent.Select(player => player.Split(','))
+                .Select(playerFields => new Player {Color = Color.FromName(playerFields[1]), Name = playerFields[0]})
+                .ToList();
         }
 
         public IList<ICommand> GetCommands()
         {
-            List<Player> players = GetPlayers();
-            List<string> playerMoves = _fileContent.Split(',').ToList();
-            List<ICommand> list = new List<ICommand>();
-            foreach (var command in playerMoves)
-            {
-                var content = command.Split(':');
-                Player player = players.FirstOrDefault(n => n.Name == content[0]);
-                if (player != null) list.Add(CommandFactory.Get(content[1], player));
-            }
-            return list;
+            var players = GetPlayers();
+            var playerMoves = _fileContent.Split(',').ToList();
+            return (playerMoves.Select(command => command.Split(':'))
+                .Select(content => new {content, player = (Player) players.FirstOrDefault(n => n.Name == content[0])})
+                .Where(@t => @t.player != null)
+                .Select(@t => CommandFactory.Get(@t.content[1], @t.player))).ToList();
         }
     }
 }
