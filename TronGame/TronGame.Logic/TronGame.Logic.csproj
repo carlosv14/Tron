@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActionRunner.cs" />
     <Compile Include="CommandFactory.cs" />
     <Compile Include="CommandNotImplementedException.cs" />
     <Compile Include="CommandsFile.cs" />
