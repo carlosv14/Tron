@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TronGame.Logic", "TronGame.Logic\TronGame.Logic.csproj", "{9A8A3BAB-93A6-4BF9-82DE-3872AB3CCCBD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TronGame.WinForm", "TronGame.WinForm\TronGame.WinForm.csproj", "{B54E783E-4DB4-478B-8C47-49E31A9B80C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TronGame.Console", "TronGame.Console\TronGame.Console.csproj", "{A61D75D4-43B3-4AD6-9808-60E1BA1ED88C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TronGame.Tests", "TronGame.Tests\TronGame.Tests.csproj", "{6A7CF815-3924-42DC-BB54-A164D8079904}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9A8A3BAB-93A6-4BF9-82DE-3872AB3CCCBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A8A3BAB-93A6-4BF9-82DE-3872AB3CCCBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A8A3BAB-93A6-4BF9-82DE-3872AB3CCCBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A8A3BAB-93A6-4BF9-82DE-3872AB3CCCBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B54E783E-4DB4-478B-8C47-49E31A9B80C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B54E783E-4DB4-478B-8C47-49E31A9B80C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B54E783E-4DB4-478B-8C47-49E31A9B80C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B54E783E-4DB4-478B-8C47-49E31A9B80C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A61D75D4-43B3-4AD6-9808-60E1BA1ED88C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A61D75D4-43B3-4AD6-9808-60E1BA1ED88C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A61D75D4-43B3-4AD6-9808-60E1BA1ED88C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A61D75D4-43B3-4AD6-9808-60E1BA1ED88C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A7CF815-3924-42DC-BB54-A164D8079904}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A7CF815-3924-42DC-BB54-A164D8079904}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A7CF815-3924-42DC-BB54-A164D8079904}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A7CF815-3924-42DC-BB54-A164D8079904}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
