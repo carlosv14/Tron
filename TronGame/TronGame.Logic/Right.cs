@@ -1,4 +1,6 @@
-﻿namespace TronGame.Logic
+﻿using TronGame.Logic.Interfaces;
+
+namespace TronGame.Logic
 {
     internal class Right : ICommand
     {

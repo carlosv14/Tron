@@ -1,4 +1,4 @@
-﻿namespace TronGame.Logic
+﻿namespace TronGame.Logic.Interfaces
 {
     public interface ICommand
     {
