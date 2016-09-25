@@ -4,9 +4,9 @@ using TronGame.Logic.Interfaces;
 
 namespace TronGame.Console
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main()
         {
             var builder = new ContainerBuilder();
             builder.RegisterType<CommandsFileParser>().As<ICommandsFileParser>().WithParameter("fileName", "Moves.txt");

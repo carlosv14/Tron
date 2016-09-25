@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using TronGame.Logic;
-using System.Drawing;
 using TronGame.Logic.Interfaces;
 
 namespace TronGame.Console
 {
     public class Game
     {
-        private List<Player> _players;
+        private readonly List<Player> _players;
         private readonly IList<ICommand> _commands;
         private readonly Dictionary<Space, string> _board;
         private readonly int _height;

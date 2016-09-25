@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace TronGame.Logic
+﻿namespace TronGame.Logic
 {
     public class Space
     {
