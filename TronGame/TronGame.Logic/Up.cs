@@ -1,6 +1,6 @@
 ﻿namespace TronGame.Logic
 {
-    internal class Up : ICommand
+    public class Up : ICommand
     {
         public Player Player { get; set; }
 
