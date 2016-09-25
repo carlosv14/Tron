@@ -1,13 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TronGame.Logic", "TronGame.Logic\TronGame.Logic.csproj", "{9A8A3BAB-93A6-4BF9-82DE-3872AB3CCCBD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TronGame.WinForm", "TronGame.WinForm\TronGame.WinForm.csproj", "{B54E783E-4DB4-478B-8C47-49E31A9B80C3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{9A8A3BAB-93A6-4BF9-82DE-3872AB3CCCBD} = {9A8A3BAB-93A6-4BF9-82DE-3872AB3CCCBD}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TronGame.Console", "TronGame.Console\TronGame.Console.csproj", "{A61D75D4-43B3-4AD6-9808-60E1BA1ED88C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{9A8A3BAB-93A6-4BF9-82DE-3872AB3CCCBD} = {9A8A3BAB-93A6-4BF9-82DE-3872AB3CCCBD}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TronGame.Tests", "TronGame.Tests\TronGame.Tests.csproj", "{6A7CF815-3924-42DC-BB54-A164D8079904}"
 EndProject

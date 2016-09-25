@@ -21,10 +21,12 @@ namespace TronGame.Logic
 
         public List<Player> GetPlayers()
         {
+            var filecontent = this._fileContent;
             var split = _fileContent.Split('|').ToList();
             var playerContent = split[0];
             this._fileContent = split[1];
             var playersContent = playerContent.Split(';').ToList();
+            this._fileContent = filecontent;
             return playersContent.Select(player => player.Split(','))
                 .Select(playerFields => new Player {Color = Color.FromName(playerFields[1]), Name = playerFields[0]})
                 .ToList();

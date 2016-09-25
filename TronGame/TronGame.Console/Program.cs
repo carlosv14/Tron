@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TronGame.Logic;
 
 namespace TronGame.Console
 {
@@ -10,6 +11,9 @@ namespace TronGame.Console
     {
         static void Main(string[] args)
         {
+
+            var game = new Game(new CommandsFileParser("Moves.txt"));
+            game.Play();
         }
     }
 }
