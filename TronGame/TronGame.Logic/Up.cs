@@ -1,14 +1,19 @@
-﻿namespace TronGame.Logic
+﻿using TronGame.Logic.Interfaces;
+
+namespace TronGame.Logic
 {
-    internal class Up : ICommand
+    public class Up : ICommand
     {
-        public Up()
+        public Player Player { get; set; }
+
+        public Up(Player player)
         {
+            Player = player;
         }
 
         public void Run()
         {
-            throw new System.NotImplementedException();
+            Player.Move(-1,0);
         }
     }
 }

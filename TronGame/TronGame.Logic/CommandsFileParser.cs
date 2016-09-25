@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TronGame.Logic.Interfaces;
 
 namespace TronGame.Logic
 {
@@ -12,43 +13,41 @@ namespace TronGame.Logic
     {
         private readonly string _fileName;
         private string _fileContent;
-
+        private List<Player> _players; 
         public CommandsFileParser(string fileName)
         {
             this._fileName = fileName;
-            this._fileContent = File.ReadAllText(_fileName);
+            this._fileContent = File.ReadAllText(fileName);
         }
 
         public List<Player> GetPlayers()
         {
-            List<Player> players = new List<Player>();
+            this._players = new List<Player>();
             List<string> split = _fileContent.Split('|').ToList();
             var playerContent = split[0];
             this._fileContent = split[1];
-            List<string> playersContent = playerContent.Split(';').ToList();
-            foreach (var player in playersContent)
-            {
-                var playerFields = player.Split(',');
-                players.Add(new Player {Color = Color.FromName(playerFields[1]), Name = playerFields[0]});
+            var playersContent = playerContent.Split(';').ToList();
+            return playersContent.Select(player => player.Split(','))
+                .Select(playerFields => new Player {Color = Color.FromName(playerFields[1]), Name = playerFields[0]})
+                .ToList();
             }
-            return players;
-        }
 
-        public Dictionary<Player, ICommand> GetCommands()
+        public IList<ICommand> GetCommands(List<Player> players )
         {
-            List<Player> players = GetPlayers();
+
             Dictionary<Player, ICommand> commands = new Dictionary<Player, ICommand>();
             List<string> playerMoves = _fileContent.Split(',').ToList();
-            foreach (var command in playerMoves)
-            {
-                var content = command.Split(':');
-                var player = players.FirstOrDefault(n => n.Name == content[0]);
-                if (player != null)
-                {
-                    commands.Add(player, CommandFactory.Get(content[1]));
-                }
-            }
-            return commands;
+            
+            return (playerMoves.Select(command => command.Split(':'))
+                .Select(content => new {content, player = (Player) players.FirstOrDefault(n => n.Name == content[0])})
+                .Where(@t => @t.player != null)
+                .Select(@t => CommandFactory.Get(@t.content[1], @t.player))).ToList();
+        }
+
+        public ICommandsFile Parse()
+        {
+            var players = GetPlayers();
+            return new CommandsFile {Commands = GetCommands(players), Players = players};
         }
     }
 }
