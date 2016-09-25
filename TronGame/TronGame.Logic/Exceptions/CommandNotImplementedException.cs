@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Runtime.Serialization;
 
-namespace TronGame.Logic
+namespace TronGame.Logic.Exceptions
 {
     public class CommandNotImplementedException : Exception
     {
