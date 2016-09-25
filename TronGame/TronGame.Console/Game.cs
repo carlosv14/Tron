@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TronGame.Logic;
 using System.Drawing;
+using TronGame.Logic.Interfaces;
 
 namespace TronGame.Console
 {
@@ -12,26 +13,45 @@ namespace TronGame.Console
         private readonly IList<ICommand> _commands;
         private readonly Dictionary<Space, string> _board;
         private readonly int _height;
-        private string _winner;
+        private string _loser;
         private readonly int _width;
 
         public Game(ICommandsFileParser commandsFileParser)
         {
+
             var commandsFileParser1 = commandsFileParser;
-            _players = commandsFileParser1.GetPlayers();
-            _commands = commandsFileParser1.GetCommands();
+            var playersAndCommands = commandsFileParser1.Parse();
+            _players = playersAndCommands.Players;
+            _commands = playersAndCommands.Commands;
             _height = 10;
             _width = 10;
             _board = GenerateBoard();
+            SetStartingPositions();
         }
 
         private Dictionary<Space, string> GenerateBoard()
         {
-            return Enumerable.Range(0, _width)
+            var list= Enumerable.Range(0, _width)
                     .SelectMany(val => Enumerable.Range(0, _height).Select(inVal => new Tuple<int, int>(val, inVal)))
                     .Zip(Enumerable.Repeat("-", _width * _height).ToList(),
                         (space, character) => new Tuple<Space, string>(new Space(space.Item1,space.Item2), character))
-                    .ToDictionary(space => space.Item1, space => space.Item2);
+                    .ToList();
+            var borad = new Dictionary<Space,string>(new SpaceEqualityComparer());
+            foreach (var l in list)
+            {
+                borad[l.Item1] = l.Item2;
+            }
+            return borad;
+
+        }
+
+
+        private void SetStartingPositions()
+        {
+            _players[0].Position=new Space(0,0);
+            _players[1].Position= new Space(9,9);
+            _board[_players[0].Position]= _players[0].Color.Name.ToCharArray()[0].ToString();
+            _board[_players[1].Position] = _players[1].Color.Name.ToCharArray()[0].ToString();
         }
 
         public void Play()
@@ -45,7 +65,7 @@ namespace TronGame.Console
                     _board[player.Position] = player.Color.Name.ToCharArray()[0].ToString();
                 else
                 {
-                    _winner = player.Name;
+                    _loser = player.Name;
                     break;
                 }
             }
@@ -56,10 +76,10 @@ namespace TronGame.Console
 
         private void PrintWinner()
         {
-            if (_winner==null)
+            if (_loser==null)
                 System.Console.WriteLine("Tie!!!!");
             else
-                System.Console.WriteLine(_winner+" Wins!!!");
+                System.Console.WriteLine(_loser+" Lost!!!");
         }
 
         private void PrintBoard()
@@ -69,8 +89,8 @@ namespace TronGame.Console
             {
                 for (int j = 0; j < _height; j++)
                 {
-                    currentSpace.XPos = i;
-                    currentSpace.YPos = j;
+                    currentSpace.XPos = j;
+                    currentSpace.YPos = i;
                     System.Console.Write(_board[currentSpace]+" ");
                 }
                 System.Console.Write("\r\n");

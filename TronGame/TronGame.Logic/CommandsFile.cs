@@ -10,7 +10,7 @@ namespace TronGame.Logic
     public class CommandsFile : ICommandsFile
     {
         public List<Player> Players { get; set; }
-        public Dictionary<Player, ICommand> Commands { get; set; }
+        public IList<ICommand> Commands { get; set; }
         public string GetContent(string fileName)
         {
             throw new NotImplementedException();

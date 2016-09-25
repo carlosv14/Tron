@@ -14,6 +14,7 @@ namespace TronGame.Console
 
             var game = new Game(new CommandsFileParser("Moves.txt"));
             game.Play();
+            System.Console.ReadLine();
         }
     }
 }

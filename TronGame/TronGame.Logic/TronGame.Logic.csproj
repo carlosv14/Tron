@@ -55,6 +55,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Right.cs" />
     <Compile Include="Space.cs" />
+    <Compile Include="SpaceEqualityComparer.cs" />
     <Compile Include="Up.cs" />
   </ItemGroup>
   <ItemGroup>

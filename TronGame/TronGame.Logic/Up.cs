@@ -13,7 +13,7 @@ namespace TronGame.Logic
 
         public void Run()
         {
-            Player.Move(0, -1);
+            Player.Move(-1,0);
         }
     }
 }

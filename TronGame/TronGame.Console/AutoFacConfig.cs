@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using TronGame.Logic;
+using TronGame.Logic.Interfaces;
 
 namespace TronGame.Console
 {
