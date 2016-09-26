@@ -12,7 +12,7 @@ namespace TronGame.Console
         private readonly IList<ICommand> _commands;
         private readonly Dictionary<Space, string> _board;
         private readonly int _height;
-        private string _loser;
+        public string _loser { get; private set; }
         private readonly int _width;
 
         public Game(ICommandsFileParser commandsFileParser)
@@ -35,12 +35,12 @@ namespace TronGame.Console
                     .Zip(Enumerable.Repeat("-", _width * _height).ToList(),
                         (space, character) => new Tuple<Space, string>(new Space(space.Item1,space.Item2), character))
                     .ToList();
-            var borad = new Dictionary<Space,string>(new SpaceEqualityComparer());
+            var board = new Dictionary<Space,string>(new SpaceEqualityComparer());
             foreach (var l in list)
             {
-                borad[l.Item1] = l.Item2;
+                board[l.Item1] = l.Item2;
             }
-            return borad;
+            return board;
 
         }
 
