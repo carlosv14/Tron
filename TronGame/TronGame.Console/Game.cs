@@ -12,7 +12,7 @@ namespace TronGame.Console
         private readonly IList<ICommand> _commands;
         private readonly Dictionary<Space, string> _board;
         private readonly int _height;
-        public string _loser { get; private set; }
+        public string Loser { get; private set; }
         private readonly int _width;
 
         public Game(ICommandsFileParser commandsFileParser)
@@ -30,18 +30,11 @@ namespace TronGame.Console
 
         private Dictionary<Space, string> GenerateBoard()
         {
-            var list= Enumerable.Range(0, _width)
+            return Enumerable.Range(0, _width)
                     .SelectMany(val => Enumerable.Range(0, _height).Select(inVal => new Tuple<int, int>(val, inVal)))
                     .Zip(Enumerable.Repeat("-", _width * _height).ToList(),
                         (space, character) => new Tuple<Space, string>(new Space(space.Item1,space.Item2), character))
-                    .ToList();
-            var board = new Dictionary<Space,string>(new SpaceEqualityComparer());
-            foreach (var l in list)
-            {
-                board[l.Item1] = l.Item2;
-            }
-            return board;
-
+                        .ToDictionary(t=>t.Item1,t=>t.Item2, new SpaceEqualityComparer()); 
         }
 
 
@@ -64,7 +57,7 @@ namespace TronGame.Console
                     _board[player.Position] = player.Color.Name.ToCharArray()[0].ToString();
                 else
                 {
-                    _loser = player.Name;
+                    Loser = player.Name;
                     break;
                 }
             }
@@ -75,10 +68,10 @@ namespace TronGame.Console
 
         private void PrintWinner()
         {
-            if (_loser==null)
+            if (Loser==null)
                 System.Console.WriteLine("Tie!!!!");
             else
-                System.Console.WriteLine(_loser+" Lost!!!");
+                System.Console.WriteLine(Loser+" Lost!!!");
         }
 
         private void PrintBoard()

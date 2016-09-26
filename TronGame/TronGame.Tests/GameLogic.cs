@@ -88,7 +88,7 @@ namespace TronGame.Tests
         [Then(@"the loser should be '(.*)'")]
         public void ThenTheResultLoserShouldBe(string p0)
         {
-            Assert.AreEqual(p0.IsNullOrEmpty() ? null : p0, _game._loser);
+            Assert.AreEqual(p0.IsNullOrEmpty() ? null : p0, _game.Loser);
         }
     }
 }
