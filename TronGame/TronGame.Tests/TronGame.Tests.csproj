@@ -67,24 +67,28 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="CorrectFile.feature.cs">
+    <Compile Include="GameLogic.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CorrectFile.feature</DependentUpon>
+      <DependentUpon>GameLogic.feature</DependentUpon>
     </Compile>
-    <Compile Include="CorrectFileSteps.cs" />
+    <Compile Include="GameLogic.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="CorrectFile.feature">
+    <None Include="GameLogic.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>CorrectFile.feature.cs</LastGenOutput>
+      <LastGenOutput>GameLogic.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TronGame.Console\TronGame.Console.csproj">
+      <Project>{A61D75D4-43B3-4AD6-9808-60E1BA1ED88C}</Project>
+      <Name>TronGame.Console</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TronGame.Logic\TronGame.Logic.csproj">
       <Project>{9A8A3BAB-93A6-4BF9-82DE-3872AB3CCCBD}</Project>
       <Name>TronGame.Logic</Name>
