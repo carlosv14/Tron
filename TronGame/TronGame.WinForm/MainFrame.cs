@@ -72,6 +72,7 @@ namespace TronGame.WinForm
 
         public void AddNewPath(Control playerPath, int x, int y)
         {
+            //Fixed
             var posY = y == 0 ? 7 : y*35+6;
             var posX = x == 0 ? 7 : x*35+6;
             var path = new Panel();
