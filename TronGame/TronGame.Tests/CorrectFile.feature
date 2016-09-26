@@ -9,6 +9,6 @@ Scenario: Correct File Format
 	And The content of the file is 'Player1,Red;Player2,Blue|Player1:U,Player2:D'
 	When I parse the file
 	Then the result should be
-	| Players     | Commands  |
-	| Player1 Red | Player1:U |
-	| Player2 Blue| Player2:D |
+	| Players       | Commands  |
+	| Player1 Red   | Player1:U |
+	| Player2 Blue  | Player2:D |
