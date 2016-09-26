@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using Castle.Core.Internal;
@@ -25,10 +24,12 @@ namespace TronGame.Tests
 
         private CommandsFileModel ParseToModel(Table table)
         {
-            CommandsFileModel tableFileModel = new CommandsFileModel();
-            tableFileModel.Players = new List<Player>();
-            tableFileModel.Commands = new List<ICommand>();
-            List<Player> players = new List<Player>();
+            var tableFileModel = new CommandsFileModel
+            {
+                Players = new List<Player>(),
+                Commands = new List<ICommand>()
+            };
+            var players = new List<Player>();
             foreach (var row in table.Rows)
             {
                 var playerInfo = row[0].Split(' ');
