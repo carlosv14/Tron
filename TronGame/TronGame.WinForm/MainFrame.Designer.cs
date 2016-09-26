@@ -1,8 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Drawing;
-using System.Reflection;
-using System.Windows.Forms;
-using TronGame.WinForm.Properties;
+﻿using System.Windows.Forms;
 
 namespace TronGame.WinForm
 {

@@ -1,15 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Autofac;
 using TronGame.Logic;
-using TronGame.Logic.Interfaces;
 using TronGame.WinForm.Properties;
 
 namespace TronGame.WinForm
@@ -91,7 +83,7 @@ namespace TronGame.WinForm
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Dispose();
+            Dispose();
         }
     }
 }

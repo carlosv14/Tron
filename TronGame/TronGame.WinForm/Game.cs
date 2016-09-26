@@ -1,14 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using TronGame.Logic;
 using TronGame.Logic.Interfaces;
-using TronGame.WinForm;
-using TronGame.WinForm.Properties;
 
 
 namespace TronGame.WinForm
