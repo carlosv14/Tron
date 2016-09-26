@@ -46,6 +46,7 @@
     <Compile Include="Exceptions\CommandNotImplementedException.cs" />
     <Compile Include="CommandsFile.cs" />
     <Compile Include="CommandsFileParser.cs" />
+    <Compile Include="Model\CommandsFileModel.cs" />
     <Compile Include="Moves\Down.cs" />
     <Compile Include="Interfaces\ICommand.cs" />
     <Compile Include="Interfaces\ICommandsFile.cs" />

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using TronGame.Logic.Model;
 
 namespace TronGame.Logic.Interfaces
 {
@@ -6,6 +7,6 @@ namespace TronGame.Logic.Interfaces
     {
         List<Player> GetPlayers();
         IList<ICommand> GetCommands(List<Player> players );
-        ICommandsFile Parse();
+        CommandsFileModel Parse();
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using TronGame.Logic;
 using TronGame.Logic.Interfaces;
+using TronGame.Logic.Model;
 
 namespace TronGame.Console
 {
@@ -9,6 +10,7 @@ namespace TronGame.Console
         private static void Main()
         {
             var builder = new ContainerBuilder();
+            builder.RegisterType<CommandsFile>().As<ICommandsFile>();
             builder.RegisterType<CommandsFileParser>().As<ICommandsFileParser>().WithParameter("fileName", "Moves.txt");
             var container = builder.Build();
 

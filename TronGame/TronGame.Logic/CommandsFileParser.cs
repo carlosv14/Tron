@@ -3,6 +3,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using TronGame.Logic.Interfaces;
+using TronGame.Logic.Model;
 
 namespace TronGame.Logic
 {
@@ -10,9 +11,9 @@ namespace TronGame.Logic
     {
         private string _fileContent;
 
-        public CommandsFileParser(string fileName)
+        public CommandsFileParser(string fileName, ICommandsFile commandsFile)
         {
-            _fileContent = File.ReadAllText(fileName);
+            _fileContent = commandsFile.GetContent(fileName);
         }
 
         public List<Player> GetPlayers()
@@ -37,10 +38,10 @@ namespace TronGame.Logic
                 .Select(t => CommandFactory.Get(t.content[1], t.player))).ToList();
         }
 
-        public ICommandsFile Parse()
+        public CommandsFileModel Parse()
         {
             var players = GetPlayers();
-            return new CommandsFile {Commands = GetCommands(players), Players = players};
+            return new CommandsFileModel {Commands = GetCommands(players), Players = players};
         }
     }
 }
