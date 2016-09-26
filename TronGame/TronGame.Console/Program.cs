@@ -1,15 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Autofac;
+using TronGame.Logic;
+using TronGame.Logic.Interfaces;
 
 namespace TronGame.Console
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main()
         {
+            var builder = new ContainerBuilder();
+            builder.RegisterType<CommandsFileParser>().As<ICommandsFileParser>().WithParameter("fileName", "Moves.txt");
+            var container = builder.Build();
+
+            using (var scope = container.BeginLifetimeScope())
+            {
+                var parser = scope.Resolve<ICommandsFileParser>();
+                var game = new Game(parser);
+                game.Play();
+                System.Console.ReadLine();
+            }
+
+           
         }
     }
 }
