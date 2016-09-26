@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Autofac;
+using TronGame.Logic;
+using TronGame.Logic.Interfaces;
 
 namespace TronGame.WinForm
 {
@@ -14,9 +17,25 @@ namespace TronGame.WinForm
         [STAThread]
         static void Main()
         {
+            var builder = new ContainerBuilder();
+            builder.RegisterType<CommandsFile>().As<ICommandsFile>();
+            builder.RegisterType<CommandsFileParser>().As<ICommandsFileParser>().WithParameter("fileName", "Moves.txt");
+            var container = builder.Build();
+            Game game ;
+
+            using (var scope = container.BeginLifetimeScope())
+            {
+                var parser = scope.Resolve<ICommandsFileParser>();
+                game = new Game(parser);
+            }
+
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            var mf = new MainFrame(game);
+            Application.Run(mf);
+
+            
         }
     }
 }

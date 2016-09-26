@@ -30,18 +30,11 @@ namespace TronGame.Console
 
         private Dictionary<Space, string> GenerateBoard()
         {
-            var list= Enumerable.Range(0, _width)
+            return Enumerable.Range(0, _width)
                     .SelectMany(val => Enumerable.Range(0, _height).Select(inVal => new Tuple<int, int>(val, inVal)))
                     .Zip(Enumerable.Repeat("-", _width * _height).ToList(),
                         (space, character) => new Tuple<Space, string>(new Space(space.Item1,space.Item2), character))
-                    .ToList();
-            var borad = new Dictionary<Space,string>(new SpaceEqualityComparer());
-            foreach (var l in list)
-            {
-                borad[l.Item1] = l.Item2;
-            }
-            return borad;
-
+                        .ToDictionary(t=>t.Item1,t=>t.Item2, new SpaceEqualityComparer()); 
         }
 
 
