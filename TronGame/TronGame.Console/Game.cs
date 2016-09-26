@@ -12,7 +12,7 @@ namespace TronGame.Console
         private readonly IList<ICommand> _commands;
         private readonly Dictionary<Space, string> _board;
         private readonly int _height;
-        private string _loser;
+        public string Loser { get; private set; }
         private readonly int _width;
 
         public Game(ICommandsFileParser commandsFileParser)
@@ -57,7 +57,7 @@ namespace TronGame.Console
                     _board[player.Position] = player.Color.Name.ToCharArray()[0].ToString();
                 else
                 {
-                    _loser = player.Name;
+                    Loser = player.Name;
                     break;
                 }
             }
@@ -68,10 +68,10 @@ namespace TronGame.Console
 
         private void PrintWinner()
         {
-            if (_loser==null)
+            if (Loser==null)
                 System.Console.WriteLine("Tie!!!!");
             else
-                System.Console.WriteLine(_loser+" Lost!!!");
+                System.Console.WriteLine(Loser+" Lost!!!");
         }
 
         private void PrintBoard()

@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
-using System.IO;
 using System.Linq;
 using TronGame.Logic.Interfaces;
 using TronGame.Logic.Model;
@@ -18,7 +17,7 @@ namespace TronGame.Logic
 
         public List<Player> GetPlayers()
         {
-            List<string> split = _fileContent.Split('|').ToList();
+            var split = _fileContent.Split('|').ToList();
             var playerContent = split[0];
             _fileContent = split[1];
             var playersContent = playerContent.Split(';').ToList();
@@ -30,7 +29,7 @@ namespace TronGame.Logic
         public IList<ICommand> GetCommands(List<Player> players )
         {
 
-            List<string> playerMoves = _fileContent.Split(',').ToList();
+            var playerMoves = _fileContent.Split(',').ToList();
             
             return (playerMoves.Select(command => command.Split(':'))
                 .Select(content => new {content, player = players.FirstOrDefault(n => n.Name == content[0])})
